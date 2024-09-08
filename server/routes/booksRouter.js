@@ -1,5 +1,5 @@
 const express = require('express');
-const { Book, Category } = require('../../db/models');
+const { Book, Category } = require('../db/models');
 
 const router = express.Router();
 
@@ -13,6 +13,18 @@ router.route('/').get(async (req, res) => {
     res.status(500).send(error, 'All book error');
   }
 });
+
+// router.route('/').get(async (req, res) => {
+//   try {
+//     const books = await Book.findAll({
+//       include: [{ model: Category }],
+//     });
+//     res.json(books);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(400).send({ message: 'Неправильный запрос' });
+//   }
+// });
 
 router.route('/:id').get(async (req, res) => {
   try {
