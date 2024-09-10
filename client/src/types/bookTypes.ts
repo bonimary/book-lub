@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { UserSchema } from './userTypes';
 
 export const bookSchema = z.object({
   id: z.number(),
@@ -9,6 +10,7 @@ export const bookSchema = z.object({
   pages: z.number(),
   language: z.string(),
   categoryId: z.number(),
+  user: UserSchema,
 });
 
 export type BookType = z.infer<typeof bookSchema>;

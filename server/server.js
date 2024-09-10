@@ -3,6 +3,8 @@ const cors = require('cors');
 const morgan = require('morgan');
 const categotyRouter = require('./routes/categoryRouter');
 const bookRouter = require('./routes/booksRouter');
+const authRouter = require('./routes/authRouter');
+const tokensRouter = require('./routes/tokensRouter');
 
 require('dotenv').config();
 
@@ -17,5 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/categorys', categotyRouter);
 app.use('/api/books', bookRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/tokens', tokensRouter);
 
 app.listen(PORT, () => console.log(`Started on port ${PORT}`));

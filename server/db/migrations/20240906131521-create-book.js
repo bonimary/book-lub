@@ -7,32 +7,40 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       title: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       autor: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       description: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       imge: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       pages: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       language: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       categoryId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Categories',
           key: 'id',
-        }
+        },
+      },
+      userId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
       },
       createdAt: {
         allowNull: false,
@@ -43,10 +51,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('NOW'),
-      }
+      },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Books');
-  }
+  },
 };
